@@ -1,4 +1,4 @@
-/*
+./*
 Author: Zebing Lin
 Email:linzebing1995@gmail.com
 */
@@ -17,22 +17,22 @@ Email:linzebing1995@gmail.com
 using namespace std;
 
 int main() {
-    FILE *fp = fopen("training.txt","r");
-    FILE *ft = fopen("train.txt","w");
-    FILE *fc = fopen("cross.txt","w");
+    ifstream fp("training.txt");
+    ofstream ft("train.txt");
+    ofstream fc("cross.txt");
     srand(time(NULL));
     char s[2048];
-    while (fscanf(fp,"%s",&s)!=EOF) {
+    while (fp.getline(s, 2000)) {
         if (rand()%100==0) {
-            fprintf(fc,"%s\n",s);
+            fc << s << endl;
         }
         else {
-            fprintf(ft,"%s\n",s);
+            ft << s << endl;
         }
     }
-    fclose(fp);
-    fclose(ft);
-    fclose(fc);
+    fp.close();
+    ft.close();
+    fc.close();
     double lr = 0.007;
     double theta = 0.005;
     int factor = 50;
@@ -40,7 +40,7 @@ int main() {
     string crossFile = "cross.txt";
     string testFile = "test.txt";
     string outFile = "5120309085_5120309016_5120309005.txt";
-    
+
     SVD svd(NULL,NULL,0,NULL,NULL, trainFile, crossFile, testFile, outFile, lr, theta, factor);
     double rmse = svd.MyTrain();
     return 0;

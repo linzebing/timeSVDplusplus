@@ -17,22 +17,22 @@ Email:linzebing1995@gmail.com
 using namespace std;
 
 int main() {
-    FILE *fp = fopen("training.txt","r");
-    FILE *ft = fopen("train.txt","w");
-    FILE *fc = fopen("cross.txt","w");
+    ifstream fp("training.txt");
+    ofstream ft("train.txt");
+    ofstream fc("cross.txt");
     srand(time(NULL));
     char s[2048];
-    while (fscanf(fp,"%s",&s)!=EOF) {
+    while (fp.getline(s, 2000)) {
         if (rand()%100==0) {
-            fprintf(fc,"%s\n",s);
+            fc << s << endl;
         }
         else {
-            fprintf(ft,"%s\n",s);
+            ft << s << endl;
         }
     }
-    fclose(fp);
-    fclose(ft);
-    fclose(fc);
+    fp.close();
+    ft.close();
+    fc.close();
     double lr = 0.005;
     double theta = 0.02;
     int factor = 200;
