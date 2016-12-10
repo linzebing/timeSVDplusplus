@@ -1,4 +1,4 @@
-./*
+/*
 Author: Zebing Lin
 Email:linzebing1995@gmail.com
 */
