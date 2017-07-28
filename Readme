@@ -32,10 +32,6 @@ One example of timeSVD++:
 
 linzebing@ufo:~/MMDS/timeSVD++$ make
 g++ -std=c++0x -c main.cpp
-main.cpp: In function ‘int main()’:
-main.cpp:28:29: warning: format ‘%s’ expects argument of type ‘char*’, but argument 3 has type ‘char (*)[2048]’ [-Wformat=]
-     while (fscanf(fp,"%s",&s)!=EOF) {
-                             ^
 g++ main.o -o run.sh
 linzebing@ufo:~/MMDS/timeSVD++$ ./run.sh
 test_Rmse in step 0: 0.862396
